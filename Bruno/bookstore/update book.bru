@@ -1,0 +1,19 @@
+meta {
+  name: update book
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:5555/books/66d067df3a8ec0f6bb0a3c5c
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "el primer titulo updated",
+    "author": "El Gustavo - updated",
+    "publishYear": "2005"
+  }
+}
