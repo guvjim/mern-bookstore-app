@@ -1,0 +1,40 @@
+/* #root {
+
+} */
+.containerHome{
+  margin: 0 auto;
+  width: 90%;
+}
+.spinner{
+  width: 414px;
+  height: 250px;
+  scale: 0.5;
+  background-image: url(./images/spinner.webp) center no-repeat;
+}
+.laTable{
+  background: #000;
+  text-align: left;
+  border-radius: 12px;
+  padding: 10px 15px 15px;
+
+  table{
+    margin: 0 auto;
+    width: 100%;
+    border-spacing: 4px;
+  }
+
+  .cent{
+    text-align: center;
+  }
+  td, th{
+    padding: 5px 10px;
+  }
+  td{
+    border: 1px solid #333;
+    border-radius: 4px;
+    margin: 3px 20px;
+  }
+  td:last-child, th:last-child{
+    text-align: right;
+  }
+}

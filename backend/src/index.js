@@ -12,11 +12,11 @@ app.use(express.json());
 // middleware for handling cors policy
 app.use(cors())
 // allow custom origins
-app.use(cors({
-    origin: 'http://localhost:5555',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type']
-}))
+// app.use(cors({
+//     origin: 'http://localhost:5555',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type']
+// }))
 
 // get book
 app.get('/',(req,res) => {
