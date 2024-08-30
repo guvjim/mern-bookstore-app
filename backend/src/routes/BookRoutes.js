@@ -1,21 +1,10 @@
 import express from 'express';
-import mongoose from 'mongoose'
-import {PORT, mongoDBURL} from './config.js';
-import { Book } from './models/BookModel.js';
+import { Book } from '../models/BookModel.js';
 
-
-const app = express();
-
-app.use(express.json());
-
-// get book
-app.get('/',(req,res) => {
-    console.log(req);
-    return res.status(234).send('oi, wahssssup')
-})
+const bookRouter = express.Router();
 
 // get all books
-app.get('/books', async (req,res) => {
+bookRouter.get('/', async (req,res) => {
     try {
         const allBooks = await Book.find({})
         return res.status(200).json({
@@ -27,7 +16,7 @@ app.get('/books', async (req,res) => {
     }
 })
 // get one book
-app.get('/books/:id', async (req,res) => {
+bookRouter.get('/:id', async (req,res) => {
 
     const { id } = req.params;
 
@@ -40,7 +29,7 @@ app.get('/books/:id', async (req,res) => {
 });
 
 // create a new book
-app.post('/books', async (req,res) => {
+bookRouter.post('/', async (req,res) => {
     try {
         if(
             !req.body.title ||
@@ -68,7 +57,7 @@ app.post('/books', async (req,res) => {
 });
 
 // edit a book
-app.put('/books/:id', async (req,res) => {
+bookRouter.put('/:id', async (req,res) => {
     try {
         if(
             !req.body.title ||
@@ -102,9 +91,7 @@ app.put('/books/:id', async (req,res) => {
     }
 });
 // delet one book
-app.delete('/books/:id', async (req,res) => {
-
-    
+bookRouter.delete('/:id', async (req,res) => {
     try {
         const { id } = req.params;
 
@@ -121,14 +108,4 @@ app.delete('/books/:id', async (req,res) => {
     }
 });
 
-mongoose
-.connect(mongoDBURL)
-    .then((result) => {
-        console.log('App connected to the DB');
-        app.listen(PORT, () => {
-            console.log(`app is listening to port: ${PORT}`);
-        });
-
-    }).catch((err) => {
-     console.log(err)   
-    });
+export default bookRouter;
